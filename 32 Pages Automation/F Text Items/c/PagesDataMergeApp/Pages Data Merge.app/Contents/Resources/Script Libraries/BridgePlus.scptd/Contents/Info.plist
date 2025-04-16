@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIconFile</key>
+	<string>applet</string>
+	<key>CFBundleIdentifier</key>
+	<string>au.com.myriad-com.lib.BridgePlus-master</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.3.3</string>
+	<key>CFBundleVersion</key>
+	<string>17</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2015-19 Shane Stanley &lt;sstanley@myriad-com.com.au&gt;</string>
+	<key>OSAAppleScriptObjCEnabled</key>
+	<true/>
+	<key>OSAScriptingDefinition</key>
+	<string>ScriptingDictionary.sdef</string>
+	<key>TemplateForCFBundleIdentifier</key>
+	<string>au.com.myriad-com.lib.BridgePlus-master</string>
+</dict>
+</plist>

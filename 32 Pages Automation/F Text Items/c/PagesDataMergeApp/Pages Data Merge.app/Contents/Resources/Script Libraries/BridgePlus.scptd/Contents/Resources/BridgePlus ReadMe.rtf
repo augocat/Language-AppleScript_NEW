@@ -1,0 +1,823 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf460
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Verdana;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue255;\red0\green22\blue176;\red230\green0\blue0;
+\red64\green128\blue0;\red108\green5\blue211;\red76\green78\blue78;\red56\green110\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww19160\viewh20200\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs48 \cf0 BridgePlus v1.3.2\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b0\fs28 \cf0 \
+BridgePlus is an AppleScript 
+\b script library
+\b0  for use under OS X 10.9 and later. For typical scripters, it includes a collection of handlers based on the functionality of ASObjC Runner.app. For AppleScriptObjC users, there are commands for backwards compatibility in conversion between AppleScript and Cocoa objects, as well as direct access to extended functionality.\
+\
+BridgePlus should be installed with any other script libraries in a folder called 
+\i Script Libraries
+\i0  inside your 
+\i ~/Library
+\i0  folder. You can also embed it directly in script applications and bundles; see below.\
+\
+To use it, you insert the line 
+\i use BridgePlus : script "BridgePlus"
+\i0  near the start of your script. Your script is likely to also require a 
+\i use scripting additions
+\i0  statement, and if you wish to use AppleScriptObjC, a 
+\i use framework "Foundation"
+\i0  statement. By including 
+\i use BridgePlus : script "BridgePlus"
+\i0 , the library's terminology will be loaded and can be used anywhere in the script.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b\fs36 \cf0 Basic use\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b0\fs28 \cf0 \
+If you do not intend to use AppleScriptObjC, BridgePlus has one relevant command defined in its dictionary: 
+\b open lib description
+\b0 . Calling this command will open this document. You call it like this:\
+\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 use
+\b0  
+\i \cf2 script
+\i0 \cf0  "BridgePlus"\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b \cf3 open lib description
+\b0 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \
+To call one of the handlers, you address the library. For example, there is a sorting handler:\
+\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 on
+\b0  \cf4 sortListOfNumbers\cf0 :\cf5 listOfNumbers\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \
+You could use it like this:\
+\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 set
+\b0  \cf5 sortedList\cf0  
+\b to
+\b0  
+\i \cf2 script
+\i0 \cf0  "BridgePlus"'s \cf4 sortListOfNumbers\cf0 :\{9, 2, 7, 3, 6, 4\}\
+\
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 You can also set a property to the library and use it like this:\
+\
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural\partightenfactor0
+
+\f1\b\fs26 \cf0 \CocoaLigature1 use
+\b0  \cf5 theLib\cf0  : 
+\i \cf2 script
+\i0 \cf0  "BridgePlus"\
+
+\b set
+\b0  \cf5 sortedList\cf0  
+\b to
+\b0  \cf5 theLib's\cf0  \cf4 sortListOfNumbers\cf0 :\{9, 2, 7, 3, 6, 4\}\
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 \CocoaLigature0 \
+The available handlers are listed below:
+\f1 \CocoaLigature1 \
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs36 \cf0 String handlers\
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b0\fs28 \cf0 \CocoaLigature0 \
+Performs a search and replace using ICU regular expressions. \
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 regexReplace\cf0 :\cf5 searchPattern\cf0  \cf4 withThis\cf0 :\cf5 replaceString\cf0  \cf4 inString\cf0 :\cf5 aString\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Supply the format string you wish to use to convert the strings to dates. For example: "yyyy-MM-dd".\
+See {\field{\*\fldinst{HYPERLINK "http://unicode.org/reports/tr35/tr35-31.html#Date_Format_Patterns"}}{\fldrslt http://unicode.org/reports/tr35/tr35-31.html#Date_Format_Patterns}} for format rules.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 datesFromStrings\cf0 :\cf5 listOfStrings\cf0  \cf4 inFormat\cf0 :\cf5 formatString\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Supply the format string you wish to use to convert the dates to strings. For example: "yyyy-MM-dd".\
+See {\field{\*\fldinst{HYPERLINK "http://unicode.org/reports/tr35/tr35-31.html#Date_Format_Patterns"}}{\fldrslt http://unicode.org/reports/tr35/tr35-31.html#Date_Format_Patterns}} for format rules.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 stringsFromDates\cf0 :\cf5 listOfDates\cf0  \cf4 inFormat\cf0 :\cf5 formatString\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Converts tab-separated values to a list of lists.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 arrayFromTSV\cf0 :\cf5 tabSeparatedValuesString\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Converts comma-separated values to a list of lists. The 
+\b commaIs
+\b0  parameter defines the (single) character used.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 arrayFromCSV\cf0 :\cf5 commaSeparatedValuesString\cf0  \cf4 commaIs\cf0 :\cf5 commaCharacter\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+The following methods modify a string or list of strings, returning a new string or list of strings accordingly. If a conversion can't be done, missing value will be returned for the relevant string.\
+\
+Applies an ICU transform. See {\field{\*\fldinst{HYPERLINK "http://userguide.icu-project.org/transforms"}}{\fldrslt http://userguide.icu-project.org/transforms}}\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 transformedFrom\cf0 :\cf5 stringOrListOfStrings\cf0  \cf4 ICUTransform\cf0 :\cf5 nameOfTransform\cf0  \cf4 inverse\cf0 :\cf5 trueOrFalse\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Encodes the five reserved XML characters only: > < & " '\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 encodedXMLFrom\cf0 :\cf5 stringOrListOfStrings\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Decodes the five reserved XML characters only > < & " '\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 unencodedForXMLFrom\cf0 :\cf5 stringOrListOfStrings\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Encodes characters outside ASCII 32-126 in decimal form (&#DD;), for use in HTML\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 encodedDecimalFrom\cf0 :\cf5 stringOrListOfStrings\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Decodes characters that appear in decimal form (&#DD;) or hexadecimal form (&#xHHHH;), as used in XML and HTML\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 decodedDecimalFrom\cf0 :\cf5 stringOrListOfStrings\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Encodes characters outside ASCII 32-126 in hexadecimal form (&#xHHHH;)\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 encodedHexFrom\cf0 :\cf5 stringOrListOfStrings\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Calculates the MD5 hash\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 MD5From\cf0 :\cf5 stringOrListOfStrings\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Converts straight quote marks into typographer's quote marks\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 smartQuotedFrom\cf0 :\cf5 stringOrListOfStrings\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Converts typographer's quote marks into straight quote marks\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 unsmartQuotedFrom\cf0 :\cf5 stringOrListOfStrings\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Converts runs of more than one space to a single space character, and trims spaces from the beginning and end of paragraphs.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 cleanSpacedFrom\cf0 :\cf5 stringOrListOfStrings\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Deletes any paragraphs that are empty or contain only spaces and/or tabs\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 emptyLineFreeFrom\cf0 :\cf5 stringOrListOfStrings\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+The following methods parse a string into an list of substrings. The localized versions for words and sentences might return different results, depending on your locale. A line is like a paragraph, but also breaks at the Unicode line-break character\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 linesOfString\cf0 :\cf5 aString
+\f0 \cf0 \CocoaLigature0 \
+
+\f1\b \CocoaLigature1 on
+\b0  \cf4 sentencesOfString\cf0 :\cf5 aString\cf0 \
+
+\b on
+\b0  \cf4 localizedSentencesOfString\cf0 :\cf5 aString\cf0 \
+
+\b on
+\b0  \cf4 wordsOfString\cf0 :\cf5 aString\cf0 \
+
+\b on
+\b0  \cf4 localizedWordsOfString\cf0 :\cf5 aString\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b\fs36 \cf0 \CocoaLigature1 List handlers\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b0\fs28 \cf0 \CocoaLigature0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 These methods return a list.\
+\
+Sort a list of strings.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 sortListOfStrings\cf0 :\cf5 listOfStrings\cf0  \cf4 caseSensitive\cf0 :\cf5 trueOrFalse\
+\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 Sort a list of numbers. (It will sort strings too, but always considering case.)\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 sortListOfNumbers\cf0 :\cf5 listOfNumbers\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+This assumes the input is a list of lists, and the pad item will be used to pad out any sublists that are shorter than the longest.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 sublistsIn\cf0 :\cf5 listOfLists\cf0  \cf4 paddedWith\cf0 :\cf5 thingToPadWith\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+This works on a list of lists, each containing the same number of entries. The result will also be a list of lists, where the first list will consist of the first item of each of the original lists, and so on. Calling it a second time effectively returns the list to its original value.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 colsToRowsIn\cf0 :\cf5 listOfLists\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Flattens a list of lists to a single list: \{\{1, 2\}, \{3, 4\}\} --> \{1, 2, 3, 4\}. Flattens one level only.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 listByFlattening\cf0 :\cf5 listOfLists\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Flattens a list of lists to a single list: \{1, 2, \{3, \{4, 5\}\}\} --> \{1, 2, 3, 4, 5\}. Flattens all levels.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 listByFullyFlattening\cf0 :\cf5 listOfLists\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Breaks aList into sublists of anInteger items.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 sublistsFrom\cf0 :\cf5 aList\cf0  \cf4 groupedBy\cf0 :\cf5 anInteger\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Assumes the list is a list of lists. The insertion list must have the same number of elements, and the first element will be inserted into the main list's first list, the second into the main list's second list, and so on. Where it is inserted is determined by the 'insertedAtIndex' parameter.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 sublistsIn\cf0 :\cf5 listOfLists\cf0  \cf4 withItems\cf0 :\cf5 listToInsert\cf0  \cf4 insertedAtIndex\cf0 :\cf5 anInteger\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Inserts a list of items as separate items into the list. Index is one-based.\
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 listByInsertingItems\cf0 :\cf5 listToInsert\cf0  \cf4 inList\cf0 :\cf5 aList\cf0  \cf4 atIndex\cf0 :\cf5 anInteger\
+\
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 Deletes items at indexes. Indexes are one-based, and you cannot use negative indexes here.\
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 listByDeletingItemsAtIndexes\cf0 :\cf5 listOfIndexes\cf0  \cf4 inList\cf0 :\cf5 aList\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Does what it says. Indexes are one-based.\
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 listByMovingItemAt\cf0 :\cf5 anInteger\cf0  \cf4 toIndex\cf0 :\cf5 anotherInteger\cf0  \cf4 inList\cf0 :\cf5 aList\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Deletes any blank items. Blanks are missing value, empty strings, empty lists, and lists consisting only of the above.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 listByDeletingBlanksIn\cf0 :\cf5 aList\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Trims any blank items from the trailing end of the list. Blanks are missing value, empty strings, empty lists, and lists consisting only of the above.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 listByTrimmingTrailingBlanksFrom\cf0 :\cf5 aList\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Trims any blank items from both ends of the list. Blanks are missing value, empty strings, empty lists, and lists consisting only of the above.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 listByTrimmingBlanksFrom\cf0 :\cf5 aList\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Instances of 'missing value' will be replaced with whatever you pass to withItem:.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 listByReplacingNullsIn\cf0 :\cf5 aList\cf0  \cf4 withItem\cf0 :\cf5 someItem\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Pattern should be a string where every instance of %@ will be replaced by a number. So a pattern of "label%@", a startNumber of 3, an endNumber of 1  and minDigits 3 will return \{"label003", "label002", "label001"\}\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 listWithPattern\cf0 :\cf5 aString\cf0  \cf4 startNumber\cf0 :\cf5 anInteger\cf0  \cf4 endNumber\cf0 :\cf5 anotherInteger\cf0  \cf4 minDigits\cf0 :\cf5 digitsInteger\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Returns an array of \{sum, max, min\} of the list.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 sumMaxMinOf\cf0 :\cf5 aListOfNumbers\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Sort a lists of lists based on indexes of the sublists. So if the (one-based) indexes are \{4, 3\}, the list will be sorted based on the value of the fourth item of the sublists, and in cases of equality, then on the third. The ascending argument should be a list of booleans, matching the indexes; if it has fewer entries, the last entry will be used for subsequent sort order. Pass an empty list to use true throughout. The type argument should be a list of strings consisting of the comparison selectors to use: "compare:" (normal sort), "localizedCompare:", "caseInsensitiveCompare:", "localizedCaseInsensitiveCompare:" and "localizedStandardCompare:". Pass an empty list to use "compare:" throughout.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 sublistsIn\cf0 :\cf5 listOfLists\cf0  \cf4 sortedByIndexes\cf0 :\cf5 listOfIndexes\cf0  \cf4 ascending\cf0 :\cf5 listOfTrueOrFalse\cf0  \cf4 sortTypes\cf0 :\cf5 listOfSelectorsOrEmptyList\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 As above, but you can also pass a list of key strings to be used for the sort. Pass an empty list to use "self" throughout, which is what the above method uses. For example, if you pass \{"length"\}, the sorting will be done on the basis of the length. The values being sorted must support the key or an error will be thrown.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 sublistsIn\cf0 :\cf5 listOfLists\cf0  \cf4 sortedByIndexes\cf0 :\cf5 listOfIndexes\cf0  \cf4 ascending\cf0 :\cf5 listOfTrueOrFalse\cf0  \cf4 sortTypes\cf0 :\cf5 listOfSelectorsOrEmptyList\cf0  \cf4 sortKeys\cf0 :\cf5 listOfKeys\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Concatenate two text items into one. Provide a list of the (one-based) indexes of the items to merge; they will be joined using the separator in the order provided, and appear at the first of the indexes. Empty strings will be ignored.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 listByMergingTextAtIndexes\cf0 :\cf5 listOfIndexes\cf0  \cf4 inList\cf0 :\cf5 aList\cf0  \cf4 inserting\cf0 :\cf5 separatorString\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Returns list of indexes where item is found; inverting true returns indexes where the item is not found. Indexes are one-based.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 indexesOfItem\cf0 :\cf5 anItem\cf0  \cf4 inList\cf0 :\cf5 aList\cf0  \cf4 inverting\cf0 :\cf5 trueOrFalse\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Returns list of indexes where any of the items in the list are found; inverting true returns indexes where the items are not found. Indexes are one-based.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 indexesOfItems\cf0 :\cf5 listOfItems\cf0  \cf4 inList\cf0 :\cf5 aList\cf0  \cf4 inverting\cf0 :\cf5 trueOrFalse\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Assumes the list is a list of lists, and that each list has the same number of items as the list of labels. The result will be a list of records that use the supplied labels in order.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 sublistsIn\cf0 :\cf5 aList\cf0  \cf4 asDictionariesUsingLabels\cf0 :\cf5 listOfLabels\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Pass a list of records and a list of labels, and a list of lists will be returned, with the order of the values in each sublist matching the order of the labels. If an empty list is passed for usingLabels, the keys of the first item will be used, sorted in case-insensitive alphabetical order, and the result will be a list of two items: the resulting list of lists, followed by a list of the labels in order.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 sublistsFrom\cf0 :\cf5 listOfRecords\cf0  \cf4 usingLabels\cf0 :\cf5 listOfLabelsOrEmptyList\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Increment each of the values in a list of integers by anInteger. Provide a negative value to decrement the values.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 listByAddingInteger\cf0 :\cf5 anInteger\cf0  \cf4 inList\cf0 :\cf5 listOfIntegers\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b\fs36 \cf0 \CocoaLigature1 Trig and log handlers\
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b0\fs28 \cf0 \CocoaLigature0 \
+Pass a single number or a list of numbers, and get a list or single number in return. Angles are in radians, and errors are returned as missing value.\
+\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 tanValueOf\cf0 :\cf5 numberOrListOfNumbers\cf0 \
+
+\b on
+\b0  \cf4 cosValueOf\cf0 :\cf5 numberOrListOfNumbers\cf0 \
+
+\b on
+\b0  \cf4 sinValueOf\cf0 :\cf5 numberOrListOfNumbers\cf0 \
+
+\b on
+\b0  \cf4 atanValueOf\cf0 :\cf5 numberOrListOfNumbers\cf0 \
+
+\b on
+\b0  \cf4 asinValueOf\cf0 :\cf5 numberOrListOfNumbers\cf0 \
+
+\b on
+\b0  \cf4 acosValueOf\cf0 :\cf5 numberOrListOfNumbers\cf0 \
+
+\b on
+\b0  \cf4 tanhValueOf\cf0 :\cf5 numberOrListOfNumbers\cf0 \
+
+\b on
+\b0  \cf4 sinhValueOf\cf0 :\cf5 numberOrListOfNumbers\cf0 \
+
+\b on
+\b0  \cf4 coshValueOf\cf0 :\cf5 numberOrListOfNumbers\cf0 \
+
+\b on
+\b0  \cf4 atanhValueOf\cf0 :\cf5 numberOrListOfNumbers\cf0 \
+
+\b on
+\b0  \cf4 asinhValueOf\cf0 :\cf5 numberOrListOfNumbers\cf0 \
+
+\b on
+\b0  \cf4 acoshValueOf\cf0 :\cf5 numberOrListOfNumbers\cf0 \
+
+\b on
+\b0  \cf4 logValueOf\cf0 :\cf5 numberOrListOfNumbers\cf0 \
+
+\b on
+\b0  \cf4 log10ValueOf\cf0 :\cf5 numberOrListOfNumbers
+\f0 \cf0 \CocoaLigature0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0  \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b\fs36 \cf0 \CocoaLigature1 Miscellaneous handlers
+\b0\fs28 \CocoaLigature0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 \
+Pass an alias, file, HFS path, or POSIX path for an image file, and receive back a record of the metadata.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 metadataFromImage\cf0 :\cf5 fileAliasOrPath\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Pass an alias, file, HFS path, or POSIX path for an image file, and receive back a record of the metadata. The labels can be found by looking up NSURL; the prefix "NSURL" and suffix "Key" are removed, and the initial character made lowercase.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 infoForFile\cf0 :\cf5 fileAliasOrPath\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+Pass an alias, file, HFS path, or POSIX path for an image file, and receive back a record of the metadata.\
+For files, the values are returned like this: \{totalFileSize:94927, totalFileAllocatedSize:98304, fileAllocatedSize:98304, fileSize:94927\}\
+The "total" values include metadata; "Allocated" means disk space used. Finder reports totalFileSize.\
+For directories and packages, only the total values are returned: \{totalFileSize:271230605, totalFileAllocatedSize:286121984\}.\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 \CocoaLigature1 on
+\b0  \cf4 sizeInfoForFile\cf0 :\cf5 fileAliasOrPath\cf0 \
+\pard\tx560\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \CocoaLigature0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b\fs38 \cf0 \CocoaLigature1 Basic AppleScriptObjC use\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b0\fs28 \cf0 \
+BridgePlus has two commands that aim to simplify and improve the conversion between Cocoa and AppleScript classes when using AppleScriptObjC. The commands are 
+\b Cocoaify
+\b0 , which takes an AppleScript value and attempts to turn it it into its Cocoa equivalent, and 
+\b Asify from
+\b0 , which takes a Cocoa value and attempts to convert it to its AppleScript equivalent.\
+\
+To see the library's dictionary you can option-drag it over Script Debugger's icon, or via Open Dictionary\'85 in Script Editor after you have added it to 
+\b ~/Library/Script Libraries
+\b0 .\
+\
+In many cases, uses of AppleScriptObjC involves three steps: converting an AppleScript value to its Cocoa equivalent, calling instance method(s) on the Cocoa object, and converting the resulting Cocoa value back to an AppleScript value. For example:\
+\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 use
+\b0  
+\i \cf2 framework
+\i0 \cf0  "Foundation"\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b \cf0 set
+\b0  \cf5 anArray\cf0  
+\b to
+\b0  
+\i \cf6 current application's
+\i0 \cf0  \cf5 NSArray's\cf0  \cf4 arrayWithArray\cf0 :\cf5 someList\cf0 \
+
+\b set
+\b0  \cf5 anArray\cf0  
+\b to
+\b0  \cf5 anArray's\cf0  \cf4 sortedArrayUsingSelector\cf0 :"compare:"\
+
+\b set
+\b0  \cf5 aList\cf0  
+\b to
+\b0  \cf5 anArray\cf0  
+\b as
+\b0  
+\i \cf2 list
+\i0 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \
+This can be rewritten using BridgePlus as:\
+\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 use
+\b0  
+\i \cf2 framework
+\i0 \cf0  "Foundation"\
+
+\b use
+\b0  \cf5 BridgePlus\cf0  : 
+\i \cf2 script
+\i0 \cf0  "BridgePlus"\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b \cf0 set
+\b0  \cf5 anArray\cf0  
+\b to
+\b0  
+\b \cf3 Cocoaify
+\b0 \cf0  \cf5 someList\cf0 \
+
+\b set
+\b0  \cf5 anArray\cf0  
+\b to
+\b0  \cf5 anArray's\cf0  \cf4 sortedArrayUsingSelector\cf0 :"compare:"\
+
+\b set
+\b0  \cf5 aList\cf0  
+\b to
+\b0  
+\b \cf3 ASify
+\b0 \cf0  \cf3 from\cf0  \cf5 anArray\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0 \
+That's a bit simpler, but not drastically so. However, the advantage of using 
+\b Cocoaify
+\b0  and 
+\b ASify from
+\b0  is that they also provide backwards compatibility for scripts that need to be able to run under OS X 10.9 and 10.10. In particular, the following issues have been addressed in OS X 10.11, but are also handled by BridgePlus under 10.10 and 10.9. This means you can take advantage of these features in scripts that need to run under older versions.\
+\
+* With 
+\b Cocoaify
+\b0 , if the AppleScript value is a 
+\i date
+\i0 , or a list or record containing a 
+\i date
+\i0 , those dates will be converted to 
+\i NSDates
+\i0 . Similarly, any 
+\i aliases
+\i0  or 
+\i files
+\i0  will be converted to 
+\i NSURLs
+\i0 .\
+\
+* With 
+\b ASify from
+\b0 , if the Cocoa value is an 
+\i NSDate
+\i0 , or it is an NSArray or NSDictionary containing an 
+\i NSDate
+\i0 , such NSDates will be converted to AppleScript 
+\i dates
+\i0 . Similarly, any 
+\i NSURLs
+\i0  will be converted to 
+\i files
+\i0  (\'abclass furl\'bb).\
+\
+* When Cocoa values containing floating-point numbers are converted to reals either by using 
+\i as real
+\i0  or as part of the coercion of a list or record, before OS X 10.11 they can lose precision -- for example, 1.2 will be returned as 1.200000047684. With 
+\b ASify from
+\b0 , this does not happen; 1.2 will be returned as 1.2 regardless of the OS version.\
+\
+So, for example, if the list in the example above was a list of AppleScript dates, they would be sorted; without BridgePlus or OS X 10.11, they would first have to be individually converted to NSDates via handlers, and individually converted back after the sort. The code would be considerably more complex.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b\fs38 \cf0 Advanced AppleScriptObjC use\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b0\fs28 \cf0 \
+The BridgePlus.scptd bundle contains a framework that includes many methods useful to scripters. The library does not contain terminology for these methods, but by including 
+\i use script "BridgePlus"
+\i0  in your scripts, you can access these methods directly.\
+\
+These methods are mostly in a class called 
+\i SMSForder
+\i0 , and many of them are based on the functionality of the now-deprecated 
+\i ASObjC Runner.app
+\i0 . To see the header for this class, use the command 
+\b open framework header
+\b0 . This is, in fact, based on the 
+\i ASObjCExtras.framework
+\i0 , renamed to avoid any clashes. \
+\
+Before you can use a method from 
+\i SMSForder
+\i0 , you need to use at least one command from the BridgePlus.scptd library. This can be 
+\b load framework
+\b0 , or any other command (for example, 
+\b Cocoaify ""
+\b0 ). As soon as the library is used, the framework is loaded.\
+\
+Here is a simple example:\
+\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f1\b \cf0 use
+\b0  
+\i \cf2 script
+\i0 \cf0  "BridgePlus"\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 \
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b \cf3 load framework
+\b0 \cf0 \
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b \cf0 set
+\b0  \cf5 newList\cf0  
+\b to
+\b0  
+\b \cf3 ASify
+\b0 \cf0  \cf3 from\cf0  (
+\i \cf6 current application's
+\i0 \cf0  \cf5 SMSForder's\cf0  \cf4 colsToRowsIn\cf0 :\{\{1, 2, 3\}, \{4, 5, 6\}, \{7, 8, 9\}, \{10, 11, 12\}\} \cf4 |error|\cf0 :(
+\i \cf2 missing value
+\i0 \cf0 ))\
+\pard\pardeftab560\li560\fi-560\sl264\slmult1\pardirnatural\partightenfactor0
+\cf7 -->	\{\{1, 4, 7, 10\}, \{2, 5, 8, 11\}, \{3, 6, 9, 12\}\}\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0 \cf0   \
+Note that you do not -- indeed, should not -- use include 
+\i use framework "BridgePlus"
+\i0  if you are using the script library; the framework will not be found that way. The combination of 
+\i use script "BridgePlus"
+\i0  and a call to one of its commands will load the framework.\
+\
+Note that SMSForder\'92s use Cocoa-style zero-based indexes, while the library\'92s matching non-AppleScriptObjC handlers use AppleScript-style one-based indexes.\
+\
+Detailed documentation is available here: 
+\f2\fs24 \expnd0\expndtw0\kerning0
+<{\field{\*\fldinst{HYPERLINK "http://www.macosxautomation.com/applescript/apps/BridgePlus_Manual/Index.html"}}{\fldrslt \cf8 \ul \ulc8 http://www.macosxautomation.com/applescript/apps/BridgePlus_Manual/Index.html}}>
+\f0\fs28 \kerning1\expnd0\expndtw0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b\fs38 \cf0 Changes\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b0\fs28 \cf0 \
+
+\b Version 1.3
+\b0  introduces new methods covering array sorting and splitting, folder enumeration, file moving and copying, UTI discovery, Spotlight searches, and keychain access. The new methods are annotated in the header file, and you should consider using a version string with it \'97 that is:\
+\
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural\partightenfactor0
+
+\f1\b \cf0 use
+\b0  
+\i \cf2 script
+\i0 \cf0  "BridgePlus" \cf2 version\cf0  "1.3.1"
+\f0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 \
+
+\b Version 1.3.1
+\b0  changes the 
+\f1\b \cf3 load framework
+\f0\b0 \cf0  command so that it returns the 
+\b SMSForder
+\b0  class. You can store this in a variable and address methods to it.\
+\
+
+\b Version 1.3.2
+\b0  fixes bugs in some of the Keyboard input source methods.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b\fs38 \cf0 \
+Deployment\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural\partightenfactor0
+
+\b0\fs28 \cf0 \
+By putting 
+\b BridgePlus.scptd
+\b0  in your 
+\i ~/Library/Script Libraries
+\i0  folder, you make it available to all your scripts. To use it in scripts you deploy elsewhere, you can add it to a script bundle -- either an applet, or a .scptd file. It needs to be in a folder called 
+\i Script Libraries
+\i0 , inside the bundle's 
+\i /Contents/Resources
+\i0  folder.\
+\
+If you plan to codesign a bundle containing the library, you need to codesign the 
+\b BridgePlus.framework
+\b0  within 
+\b BridgePlus.scptd
+\b0  first.\
+\
+If you use it in an Xcode project, you can also add BridgePlus.framework separately as a normal framework, and then remove it from within the BridgePlus.scptd bundle. In this way, recent versions of Xcode will take care of codesigning the framework for you.\
+\
+You can download BridgePlus here: 
+\f2\fs24 \expnd0\expndtw0\kerning0
+<{\field{\*\fldinst{HYPERLINK "http://www.macosxautomation.com/applescript/apps/BridgePlus_Manual/Index.html"}}{\fldrslt \cf8 \ul \ulc8 http://www.macosxautomation.com/applescript/apps/BridgePlus.html}}>\
+
+\f0\fs28 \kerning1\expnd0\expndtw0 \
+You can use and distribute this library and framework, together or separately, free of charge. There are no guarantees or warranties whatsoever. Use at your own risk.\
+\
+-- Shane Stanley <sstanley@myriad-com.com.au>}
