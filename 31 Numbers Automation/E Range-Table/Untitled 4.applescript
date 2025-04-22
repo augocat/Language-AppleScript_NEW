@@ -22,7 +22,9 @@ tell application "Numbers"
 			set defaultDateAndTime to (current date)
 			tell selectedTable
 				set the cellCount to the count of cells of the selection range
+				set the selectedRange to selection range
 				repeat with i from 1 to the cellCount
+					set the selection range to the selectedRange
 					tell cell i of the selection range
 						if format is in {stepper} then
 							set the value to defaultStepperValue
