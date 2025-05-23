@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>417</string>
+	<key>AMApplicationVersion</key>
+	<string>2.6</string>
+	<key>AMDocumentVersion</key>
+	<string>2</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run AppleScript.action</string>
+				<key>ActionName</key>
+				<string>Run AppleScript</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>use framework "Foundation"use framework "CoreImage"use scripting additionsproperty targetMinimumDimension : 400on run {input, parameters}	set thisText to input as string	if thisText is "" then error number 128		tell application "Keynote"		activate		if not (exists document 1) then error number -128	end tell		set thisString to current application's NSString's stringWithString:thisText		set anImageFilter to current application's CIFilter's filterWithName:"CIQRCodeGenerator"	anImageFilter's setDefaults()		set thisData to thisString's dataUsingEncoding:(current application's NSUTF8StringEncoding)		anImageFilter's setValue:thisData forKey:"inputMessage"	anImageFilter's setValue:"L" forKey:"inputCorrectionLevel"		set baseImage to anImageFilter's outputImage()	set baseImageWidth to baseImage's extent()'s |size|()'s width()	set theScale to (targetMinimumDimension div baseImageWidth) + 1		set thisTransform to current application's CGAffineTransform's CGAffineTransformMakeScale(theScale, theScale)	set thisOutputImage to baseImage's imageByApplyingTransform:thisTransform		set thisImageRep to current application's NSCIImageRep's imageRepWithCIImage:thisOutputImage		set resultingImage to current application's NSImage's alloc()'s initWithSize:(thisImageRep's |size|())		resultingImage's addRepresentation:thisImageRep		set tiffData to resultingImage's TIFFRepresentation()		set imageRep to current application's NSBitmapImageRep's imageRepWithData:tiffData	set theProps to current application's NSDictionary's dictionaryWithObject:1.0 forKey:(current application's NSImageCompressionFactor)	set imageData to (imageRep's representationUsingType:(current application's NSJPEGFileType) |properties|:theProps)	set destPath to (POSIX path of (path to pictures folder)) &amp; (do shell script "uuidgen") &amp; ".jpg"	set theResult to (imageData's writeToFile:destPath atomically:true)	if the result is false then		error "Problem writing to file."	else		tell application "Keynote"			activate			tell front document				set documentWidth to the width of it				set documentHeight to the height of it				tell current slide					set thisImage to make new image with properties {file:(destPath as POSIX file), width:targetMinimumDimension, height:targetMinimumDimension}					set the position of thisImage to {(documentWidth - targetMinimumDimension) div 2, (documentHeight - targetMinimumDimension) div 2}				end tell			end tell		end tell				-- since the image is automatically imported into the Keynote document, move the source image file to trash		tell application "Finder" to move (destPath as POSIX file) to the trash	end if		return true	end run</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunScriptAction</string>
+				<key>InputUUID</key>
+				<string>D2F5BCEC-F50F-4E91-A652-CA92CB0F8728</string>
+				<key>Keywords</key>
+				<array>
+					<string>Run</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>4F6FF0CB-0972-4F51-9D3B-D116F988BE56</string>
+				<key>UUID</key>
+				<string>DBA96FC6-A65D-48D9-A1AC-EDB8691CFA4D</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>on run {input, parameters}
+	
+	(* Your script goes here *)
+	
+	return input
+end run</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>365.000000:725.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict/>
+	<key>workflowMetaData</key>
+	<dict>
+		<key>serviceApplicationBundleID</key>
+		<string>com.apple.Photos</string>
+		<key>serviceApplicationPath</key>
+		<string>/Applications/Photos.app</string>
+		<key>serviceInputTypeIdentifier</key>
+		<string>com.apple.Automator.text</string>
+		<key>serviceOutputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>serviceProcessesInput</key>
+		<integer>0</integer>
+		<key>workflowTypeIdentifier</key>
+		<string>com.apple.Automator.servicesMenu</string>
+	</dict>
+</dict>
+</plist>

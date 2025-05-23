@@ -1,0 +1,95 @@
+<?xml version='1.0'?>
+<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
+<signatures version='1.0'>
+<depends_on path='/System/Library/Frameworks/Carbon.framework'/>
+<depends_on path='/System/Library/Frameworks/Quartz.framework'/>
+<depends_on path='/System/Library/Frameworks/Cocoa.framework'/>
+<depends_on path='/System/Library/Frameworks/Foundation.framework'/>
+<depends_on path='/System/Library/Frameworks/AppKit.framework'/>
+<depends_on path='/System/Library/Frameworks/CoreFoundation.framework'/>
+<depends_on path='/System/Library/Frameworks/CoreServices.framework'/>
+<depends_on path='/System/Library/Frameworks/ImageIO.framework'/>
+<depends_on path='/System/Library/Frameworks/Security.framework'/>
+<class name='SMSForder'>
+<method class_method='true' selector='HFSPathFromURL:colonForPackages:'>
+<arg index='1' type64='B'/>
+</method>
+<method class_method='true' selector='changeInputSourceTo:'>
+<retval type64='B'/>
+</method>
+<method class_method='true' selector='copyItemAt:toItem:replace:error:'>
+<arg index='2' type64='B'/>
+<retval type64='B'/>
+</method>
+<method class_method='true' selector='filesIn:recursive:asPaths:'>
+<arg index='1' type64='B'/>
+<arg index='2' type64='B'/>
+</method>
+<method class_method='true' selector='filesIn:recursive:skipHidden:skipInsidePackages:asPaths:'>
+<arg index='1' type64='B'/>
+<arg index='2' type64='B'/>
+<arg index='3' type64='B'/>
+<arg index='4' type64='B'/>
+</method>
+<method class_method='true' selector='foldersIn:recursive:asPaths:'>
+<arg index='1' type64='B'/>
+<arg index='2' type64='B'/>
+</method>
+<method class_method='true' selector='foldersIn:recursive:skipHidden:skipInsidePackages:asPaths:'>
+<arg index='1' type64='B'/>
+<arg index='2' type64='B'/>
+<arg index='3' type64='B'/>
+<arg index='4' type64='B'/>
+</method>
+<method class_method='true' selector='indexesOfItem:inArray:inverting:'>
+<arg index='2' type64='B'/>
+</method>
+<method class_method='true' selector='indexesOfItems:inArray:inverting:'>
+<arg index='2' type64='B'/>
+</method>
+<method class_method='true' selector='itemsIn:recursive:asPaths:'>
+<arg index='1' type64='B'/>
+<arg index='2' type64='B'/>
+</method>
+<method class_method='true' selector='itemsIn:recursive:skipHidden:skipInsidePackages:asPaths:'>
+<arg index='1' type64='B'/>
+<arg index='2' type64='B'/>
+<arg index='3' type64='B'/>
+<arg index='4' type64='B'/>
+</method>
+<method class_method='true' selector='moveItemAt:toItem:replace:error:'>
+<arg index='2' type64='B'/>
+<retval type64='B'/>
+</method>
+<method class_method='true' selector='resourceValuesForKeys:forFilesIn:recursive:'>
+<arg index='2' type64='B'/>
+</method>
+<method class_method='true' selector='resourceValuesForKeys:forFilesIn:recursive:skipHidden:skipInsidePackages:'>
+<arg index='2' type64='B'/>
+<arg index='3' type64='B'/>
+<arg index='4' type64='B'/>
+</method>
+<method class_method='true' selector='resourceValuesForKeys:forFoldersIn:recursive:'>
+<arg index='2' type64='B'/>
+</method>
+<method class_method='true' selector='resourceValuesForKeys:forFoldersIn:recursive:skipHidden:skipInsidePackages:'>
+<arg index='2' type64='B'/>
+<arg index='3' type64='B'/>
+<arg index='4' type64='B'/>
+</method>
+<method class_method='true' selector='resourceValuesForKeys:forItemsIn:recursive:'>
+<arg index='2' type64='B'/>
+</method>
+<method class_method='true' selector='resourceValuesForKeys:forItemsIn:recursive:skipHidden:skipInsidePackages:'>
+<arg index='2' type64='B'/>
+<arg index='3' type64='B'/>
+<arg index='4' type64='B'/>
+</method>
+<method class_method='true' selector='sortedArrayFrom:stableSort:usingSelector:target:'>
+<arg index='1' type64='B'/>
+</method>
+<method class_method='true' selector='transformedFrom:ICUTransform:inverse:'>
+<arg index='2' type64='B'/>
+</method>
+</class>
+</signatures>

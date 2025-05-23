@@ -1,0 +1,218 @@
+bplist00ﬂ-	
+ !"#$%&'()*+,-./0/23.=0//.ABCDE//HIJKL..OPQR./0UVW//Z[U/..__callingLinesWrap_sMainSplitFirstCollaped_sRightSplitSegChoice]alwaysDecimal\CFBundleName_callingScriptsInfo\logLinesWrap_sWindowContentWidth_sSidebarTabIndex_sRightSplitFirstCollapsed_sDictTabSplitFirstCollapedYlogEvents_sMainSplitPosition[logTextSize_sCallingSplitPosition_sDictTabSplitPosition_CFBundleShortVersionString_runScriptsOnMainThread_includeOsaxFlag_callingSourceRTF_sLibSplitPositionTop_sWindowContentHeight_TemplateForCFBundleIdentifier_CFBundleVersion_resultLinesWrap_logLinesWithNoResult_OSAScriptingDefinition_sDictCheckSplitPosition_sRightSplitPosition_CFBundleIdentifier_includeFrameworksInExport_sDictTabSplitSecondCollapsed_sDictTabSplitSegChoice_currentCallingScriptIndex_sLibSplitSegChoice_callingSelectedRange^logPrettyPrint_sRightSplitSecondCollapsed_libSelectedRange_sLibSplitPositionLeft^sUtilsTabIndex_sMainSplitSecondCollapsed\libLinesWrap_OSAAppleScriptObjCEnabled_NSHumanReadableCopyright	\ASObjCExtras¢48£567O:{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset0 Verdana;}
+{\colortbl;\red255\green255\blue255;\red64\green128\blue0;\red0\green0\blue255;\red0\green22\blue176;
+\red76\green78\blue78;\red230\green0\blue0;\red108\green5\blue211;}
+\deftab560
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+
+\f0\b\fs24 \cf0 use
+\b0  \cf2 BridgePlus\cf0  : 
+\i \cf3 script
+\i0 \cf0  "^"\
+
+\b use
+\b0  
+\i \cf3 scripting additions
+\i0 \cf0 \
+
+\b use
+\b0  
+\i \cf3 framework
+\i0 \cf0  "Foundation"\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+
+\b \cf0 set
+\b0  \cf2 aCocoaObject\cf0  
+\b to
+\b0  
+\b \cf4 Cocoaify
+\b0 \cf0  "this" \cf5 -- x is now an NSString\cf0 \
+
+\b set
+\b0  \cf2 y\cf0  
+\b to
+\b0  
+\b \cf4 ASify
+\b0 \cf0  \cf4 from\cf0  \cf2 aCocoaObject\cf0  \cf5 -- y is now the AS equivalent of a Cocoa object\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+
+\b \cf4 framework version
+\b0 \cf0 \
+\cf5 -- open framework header\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+\cf2 BridgePlus's\cf0  \cf6 smartQuotedFrom\cf0 :"this 'is' it's chance"\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+\cf2 BridgePlus's\cf0  \cf6 unsmartQuotedFrom\cf0 :"this \'91is\'92 it\'92s chance"\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+
+\b \cf0 set
+\b0  \cf2 asList\cf0  
+\b to
+\b0  \cf2 BridgePlus's\cf0  \cf6 sublistsIn\cf0 :\{\{1, 2\}, \{3, 4\}, \{5, 6, 7, 8\}\} \cf6 paddedWith\cf0 :"x"\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+
+\b \cf0 set
+\b0  \{\cf2 cocoaObject\cf0 , \cf2 theError\cf0 \} 
+\b to
+\b0  
+\i \cf7 current application's
+\i0 \cf0  \cf2 SMSForder's\cf0  \cf6 subarraysIn\cf0 :\{\{1, 2\}, \{3, 4\}, \{5, 6, 7, 8\}\} \cf6 paddedWith\cf0 :"x" \cf6 |error|\cf0 :(
+\i \cf3 specifier
+\i0 \cf0 )\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+
+\b \cf0 set
+\b0  \cf2 n\cf0  
+\b to
+\b0  
+\b \cf4 Cocoaify
+\b0 \cf0  \{\{1, 2\}, \{3, 4\}, \{5, 6, 7, 8\}\}\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+\cf2 BridgePlus's\cf0  \cf6 sublistsIn\cf0 :\cf2 n\cf0  \cf6 paddedWith\cf0 :"x"\
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+
+\b \cf4 open lib description
+\b0 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+
+\b \cf0 set
+\b0  \cf2 sortedList\cf0  
+\b to
+\b0  \cf2 BridgePlus's\cf0  \cf6 sortListOfNumbers\cf0 :\{9, 2, 7, 3, 6, 4\}}Oè{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset0 Verdana;}
+{\colortbl;\red255\green255\blue255;\red64\green128\blue0;\red0\green0\blue255;\red76\green78\blue78;
+\red0\green22\blue176;\red230\green0\blue0;}
+\deftab560
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+
+\f0\b\fs24 \cf0 use
+\b0  \cf2 BridgePlus\cf0  : 
+\i \cf3 script
+\i0 \cf0  "^"\
+
+\b use
+\b0  
+\i \cf3 scripting additions
+\i0 \cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+\cf4 --BridgePlus's sortListOfNumbers:(words of "Now is the time of the aardvark")\cf0 \
+\cf4 --> \{"Now", "aardvark", "is", "of", "the", "the", "time"\}\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+\cf4 --return BridgePlus's sublistsIn:\{\{1\}, \{1, 2\}, \{1, 2, 3, 4, 5\}, \{1, 2, 3\}\} paddedWith:(missing value)\cf0 \
+\cf4 --> error "*** -[__NSArrayM insertObject:atIndex:]: object cannot be nil" number -10000\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+\cf4 --return BridgePlus's sublistsFrom:\{1, 2, 3, 4, 11, 5, 10, 9, 8, 7\} groupedBy:7\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+\cf4 -- 'aNumber' and 'listOfLists' in the description don't make sense.\cf0 \
+\cf4 --> error "script \\"BridgePlus\\" of \'abscript\'bb doesn\'92t understand the \'93sublistsFrom_groupedBy_\'94 message." number -1708 from script "BridgePlus"\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+\cf4 --return BridgePlus's sublistsIn:\{\{1\}, \{1, 2\}, \{1, 2, 3, 4, 5\}, \{1, 2, 3\}\} withItems:\{"a", "b", "c", "d"\} insertedAtIndex:-1\cf0 \
+\cf4 -- Only recognises positive indices as being "in range".\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+\cf4 --return BridgePlus's sublistsIn:\{\{1, 2, 3, 4, 5\}, \{5, 6, 7, 8, 9\}, \{1, 2, 3, 4, 5\}, \{10, 9, 8, 7, 6\}\} sortedByIndexes:\{4, 3\} ascending:\{\} sortTypes:\{\}\cf0 \
+\cf4 --> error "The variable listOfIntegers is not defined." number -2753 from "listOfIntegers"\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+\cf4 -- return BridgePlus's listByMergingTextAtIndexes:\{2, 4\} inList:\{"Now", "is", "the", "time"\} inserting:" "\cf0 \
+\cf4 --> error "The variable listOfIntegers is not defined." number -2753 from "listOfIntegers"\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+\cf4 --return BridgePlus's indexesOfItem:"the" inList:(words of "Now is the time of the aardvark") inverting:false\cf0 \
+\cf4 --> \{\}\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+\cf4 --return BridgePlus's indexesOfItems:\{"is", "the"\} inList:(words of "Now is the time of the aardvark") inverting:true\cf0 \
+\cf4 --> \{\}\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+
+\b \cf0 set
+\b0  \cf2 fred\cf0  
+\b to
+\b0  \{
+\b \cf5 current date
+\b0 \cf0 , 
+\i \cf3 date
+\i0 \cf0  "Thursday, 31 December 2015 00:00:00"\}\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+\cf2 BridgePlus's\cf0  \cf6 stringsFromDates\cf0 :\cf2 fred\cf0  \cf6 inFormat\cf0 :"yyyy-MM-dd"\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\pardirnatural
+\cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural
+
+\b \cf5 framework version}O⁄{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red128\green0\blue128;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\slleading22\pardirnatural
+
+\f0\fs24 \cf2 tell script "^"\
+	set theResult to its\kerning1\expnd24\expndtw120
+ \kerning1\expnd0\expndtw0 \up1 handlerCallHer\kerning1\expnd24\expndtw120
+e\kerning1\expnd0\expndtw0 \up0 \
+end tell\
+}£9:;X{785, 0}Y{1689, 0}X{38, 15}	#@ìH     	#@p0     "A0  #@u0     #@w–     U1.3.2Oÿ{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf460
+{\fonttbl\f0\fnil\fcharset0 Verdana;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue255;\red64\green128\blue0;\red230\green0\blue0;
+}
+\deftab560
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 tell
+\b0  
+\i \cf2 script
+\i0 \cf0  "^"\
+\pard\pardeftab560\li1120\fi-1120\slleading22\pardirnatural\partightenfactor0
+\cf0 	
+\b set
+\b0  \cf3 theResult\cf0  
+\b to
+\b0  
+\b its
+\b0  \cf4 datesFromStrings\cf0 :\{"02/20/99"\} \cf4 inFormat\cf0 :"M/d/y"\
+	
+\i \cf2 version
+\i0 \cf0 \
+	
+\b \cf2 framework version
+\b0 \cf0 \
+\pard\pardeftab560\li560\fi-560\slleading22\pardirnatural\partightenfactor0
+
+\b \cf0 end
+\b0  
+\b tell
+\b0 \
+}#@Ç     #@ëÿ     _ au.com.myriad-com.lib.{LIB-NAME}R15		_ScriptingDictionary.sdef#@i      #@Ç–     _ au.com.myriad-com.lib.{LIB-NAME}	 X{122, 0}Z{3888, 12}#@ép     		o1 ©   2 0 1 5   S h a n e   S t a n l e y   < s s t a n l e y @ m y r i a d - c o m . c o m . a u >  e x í © ∑ ƒ Ÿ Ê ¸+HRgsã£¿ŸÎ˛,L^pá†∫–Â 9UjÅê≠¿ÿÁ,GHIKLY\`û#1%%%%&%/%0%9%:%;%<%E%J%S%\%b%c%d(@(I(R(u(x(y(z(ï(û(ß( (À(Ã(Œ(–(Ÿ(⁄(€(Ê(Ô((Ò(Ú             `              )W
